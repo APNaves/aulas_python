@@ -2,9 +2,8 @@ from datetime import date
 
 hoje = date.today()
 
-def calcular_idade():
-    data_de_nascimento = input("data de nascimento: ")
-
+def calcular_idade(data_de_nascimento: str):
+    
     if len(data_de_nascimento) != 10:
         print("erro")
         return -1
