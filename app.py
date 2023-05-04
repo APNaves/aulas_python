@@ -1,24 +1,27 @@
-from funcao import calcular_idade
+from funcao_calcular_idade import calcular_idade 
 import json
 
-nome = open("arquivo.json", "r")
+arquivo = open('arquivo.json', 'r')
+novo_dicionario = list(json.load(arquivo))
 
-dicionario = json.load(nome)
+novo_dicionario = ({"nome":"Vlad", "nascimento":"01/11/1111"})
 
 for i in dicionario:
-    nome = i["nome"]
-    idade = i["nascimento"] 
-    
-    idade = calcular_idade(idade)
-    
-    if idade == -1:
-        print('invalida')
+    nome =  i['nome']
+
+    if nome.lower() == "zero" or nome == "0":
         continue
 
-print("-"*30)
-print(f"seu nome é {nome}, sua idade é {idade}")
-print("-"*30)
+    nascimento = i['nascimento']
 
+    idade = calcular_idade(nascimento)
     
+    if idade < 0:
+        continue
 
-print('fim!')
+    print(nome, idade)
+
+print("FIM")
+
+with open("arquivo.json", "w") as f:
+    f.write(json.dump(novo_dicionario, indent=4))
