@@ -17,4 +17,4 @@ def ola_mundo():
     return "Olá Mundo"
   
 #instalar uvicorn, utilzando pip install uvicorn
-#para iniciar o uvicorn, digitar uvincorn no prompt ou digite no prompt python -m uvicorn
+#para iniciar o uvicorn, digitar uvincorn no prompt ou digite no prompt python -m uvicorn app:app
