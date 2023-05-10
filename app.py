@@ -18,3 +18,4 @@ def ola_mundo():
   
 #instalar uvicorn, utilzando pip install uvicorn
 #para iniciar o uvicorn, digitar uvincorn no prompt ou digite no prompt python -m uvicorn app:app
+#utilizar pra o serviço do atualizar conforme o arquivo for modificado python -m uvicorn app:app --reload
