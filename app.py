@@ -14,8 +14,32 @@ app.add_middleware(
 
 @app.get("/")
 def ola_mundo():
-    return "Olá Mundo"
+    return ler_arquivo()
+
+@app.get("/arquivo")
+def ler_arquivo():
+    from funcao_calcular_idade import calcular_idade
+    import json
+    
+    arquivo = open("arquivo.json", "r")
+    lista = list(json.load(arquivo))
+
+    return lista
+    texto = ""
+
+    for dicionario in lista:
+        nome = dicionario["nome"]
+        idade = dicionario["nascimento"]
+
+        idade = calcular_idade(idade)
+        
+        if idade == -1:
+            return "Idade Invalida"
+        
+        texto += f"O seu nome é {nome}, a sua idade é {idade}"
+    
+    return texto
   
-#instalar uvicorn, utilzando pip install uvicorn
-#para iniciar o uvicorn, digitar uvincorn no prompt ou digite no prompt python -m uvicorn app:app
+#instalar uvicorn, utilazando pip install uvicorn
+#para iniciar o uvicorn, digitar uvincorn no prompt ou digite no prompt python -m uvicorn
 #utilizar pra o serviço do atualizar conforme o arquivo for modificado python -m uvicorn app:app --reload
